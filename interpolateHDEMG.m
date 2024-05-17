@@ -9,6 +9,18 @@
 
 % interpolates one bad channel at a time
 
+% INPUTS:
+% emg = multi-channel array of emg data, e.g. 64(channels)x258909(datapoints)
+% badChannel = a single number indicating which channel you wish to replace
+% adjacentChannels = a 1D array, series of numbers indicating channels adjacent to one being replaced
+% electrodeGrid = channels in same arrangement as electrode array.
+
+% electrodeGrid can easily be created with reshape function, e.g.:
+% electrodeGrid = reshape(0:64,13,5)
+
+% OUTPUT:
+% intChan = 1D array same length as emg data, repping new interpolated channel
+
 function intChan = interpolateHDEMG(emg,badChannel,adjacentChannels,electrodeGrid)
 
 intChan = NaN(1,length(emg));
